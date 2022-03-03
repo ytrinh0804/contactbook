@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const setupContactRoutes = require("./app/routes/contact.routes");
 const { BadRequestError, errorHandler } =  require("./app/errors");
 
 const app = express();
@@ -18,7 +19,7 @@ app.use((req, res, next) => {
     next(new BadRequestError(404, "Resourece not found"));
 });
 
-app.use((err, req, res, next) => {
+app.use((error, req, res, next) => {
     errorHandler.handleError(error, res);
 });
 
